@@ -2,6 +2,8 @@ import * as Knex from 'knex';
 import { knexSnakeCaseMappers, Model } from 'objection';
 import { User } from '../users/user.entity';
 import { UserProfile } from '../users-profile/user-profile.entity';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const KNEX_CONNECTION = Symbol('KNEX_CONNECTION');
 
@@ -20,7 +22,7 @@ export const databaseProviders = [
     useFactory: async () => {
       const knex = Knex({
         client: 'pg',
-        connection: 'postgres://postgres:nss22@127.0.0.1:5432/user_profile',
+        connection: process.env.PG_CONNECTION,
         debug: process.env.KNEX_DEBUG === 'true',
         ...knexSnakeCaseMappers()
       });

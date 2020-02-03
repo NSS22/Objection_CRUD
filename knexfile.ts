@@ -1,9 +1,11 @@
 import * as Knex from 'knex';
 import { knexSnakeCaseMappers } from 'objection';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 module.exports = {
     client: 'pg',
-    connection: 'postgres://postgres:nss22@127.0.0.1:5432/user_profile',
+    connection: process.env.PG_CONNECTION,
     migrations: {
         directory: './src/database/migrations',
         stub: './src/database/migration.stub',

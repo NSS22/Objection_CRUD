@@ -4,6 +4,10 @@
 ```bash
 $ npm install
 
+create database 'user_profile':
+	- user: nss
+	- password: nss22
+
 $ npm run migrate
 ```
 
